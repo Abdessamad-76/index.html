@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lugx Store</title>
+<style>
+/* ===================== Body ===================== */
+body { 
+    margin: 0; 
+    font-family: "Roboto", sans-serif; 
+    background-color: #f5f5f5; 
+}
+
+/* ===================== Header ===================== */
+.T { 
+    background-color: #1e3a8a; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px; 
+}
+.T img { width: 150px; height: auto; }
+.T-links { display: flex; gap: 15px; align-items: center; }
+.T-links a { 
+    color: #fff; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    transition: 0.3s; 
+}
+.T-links a:hover { 
+    background-color: #3b5bbf; 
+}
+
+/* ===================== Buttons ===================== */
+.btn { 
+    background: #ff6f3c; 
+    color: #fff; 
+    border-radius: 12px; 
+    border: none; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    transition: 0.3s; 
+}
+.btn:hover { opacity: 0.85; }
+
+/* ===================== Landing Page ===================== */
+.Landing-page { 
+    background-color: #1e3a8a; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    color: #fff; 
+    padding: 30px; 
+    border-radius: 0 0 50px 50px; 
+    flex-wrap: wrap; 
+}
+.Landing-page-left { max-width: 500px; }
+.Landing-page-left p { color: #e0e0e0; line-height: 1.6; margin-top: 15px; }
+.landing-page-image img { width: 100%; max-width: 600px; border-radius: 25px; }
+
+/* ===================== Search ===================== */
+.Landing-page-search { margin-top: 20px; display: flex; gap: 10px; }
+.Landing-page-search input { 
+    flex: 1; 
+    border-radius: 15px; 
+    border: none; 
+    padding: 10px 20px; 
+}
+
+/* ===================== Trending Games ===================== */
+.Trending-container { padding: 20px 30px; }
+.Trending-container span { color: rgb(190, 137, 38); font-size: 15px; text-transform: lowercase; }
+.trending-Header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.trending-Header h2 { margin: 0; }
+.trending-cards { display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start; }
+.card { 
+    width: 250px; 
+    background-color: #fff; 
+    border-radius: 15px; 
+    overflow: hidden; 
+    cursor: pointer; 
+    transition: transform 0.3s, box-shadow 0.3s; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.card img { width: 100%; }
+.card-info { display: flex; justify-content: space-between; padding: 10px; align-items: center; }
+.card-info div { display: flex; flex-direction: column; }
+.card-info p { color: #666; margin: 0; }
+.card-info h3 { color: #1e3a8a; margin: 5px 0 0 0; }
+.card:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+
+/* ===================== Responsive ===================== */
+@media(max-width:800px){ 
+    .Landing-page { flex-direction: column; text-align: center; }
+    .trending-cards { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="T">
+  <img src="imagess/b" alt="Logo"/>
+  <div class="T-links">
+    <a href="#">Home</a>
+    <a href="#">Our shop</a>
+    <a href="#">Contact</a>
+    <button class="btn">Sign in</button>
+  </div>
+</div>
+
+<!-- Landing Page -->
+<div class="Landing-page">
+  <div class="Landing-page-left">
+    <span>Welcome to Lugx!</span>
+    <h1>Best Games in North Africa</h1>
+    <p>
+        Explore the most exciting and popular games available in North Africa! 
+        At Lugx, we bring you the latest releases, exclusive offers, and detailed 
+        reviews to help you choose the perfect game. Whether you’re an action 
+        fan, a strategy lover, or a casual player, our store has something for everyone. 
+        Join thousands of gamers and start your adventure today!
+    </p>
+    <div class="Landing-page-search">
+      <input id="searchInput" placeholder="Start typing...." />
+      <button class="btn" onclick="searchGame()">SEARCH</button>
+    </div>
+  </div>
+  <div class="landing-page-image">
+    <img src="imagess/valorant.jpg" alt="Valorant"/>
+  </div>
+</div>
+
+<!-- Trending Games -->
+<div class="Trending-container">
+  <span>Trending</span>
+  <div class="trending-Header">
+    <h2>Trending Games</h2>
+    <button class="btn" onclick="viewAll()">VIEW ALL</button>
+  </div>
+
+  <div class="trending-cards" id="trendingCards">
+    <div class="card">
+      <img src="imagess/call3.jpg" alt="Assassins Creed"/>
+      <div class="card-info">
+        <div>
+          <p>Action</p>
+          <h3>Assassins Creed</h3>
+        </div>
+        <button class="btn" onclick="addToCart('Assassins Creed')">🛒</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="imagess/cal1.jpg" alt="Call of Duty"/>
+      <div class="card-info">
+        <div>
+          <p>Action</p>
+          <h3>Call of Duty</h3>
+        </div>
+        <button class="btn" onclick="addToCart('Call of Duty')">🛒</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="imagess/valorant.jpg" alt="Valorant"/>
+      <div class="card-info">
+        <div>
+          <p>Adventure</p>
+          <h3>Valorant</h3>
+        </div>
+        <button class="btn" onclick="addToCart('Valorant')">🛒</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== JavaScript ===================== -->
+<script>
+function addToCart(game) {
+  alert(game + " added to cart!");
+}
+
+function searchGame() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const cards = document.querySelectorAll('.trending-cards .card');
+  cards.forEach(card => {
+    const title = card.querySelector('h3').innerText.toLowerCase();
+    if(title.includes(input)) { card.style.display = 'block'; }
+    else { card.style.display = 'none'; }
+  });
+}
+
+function viewAll() {
+  const cards = document.querySelectorAll('.trending-cards .card');
+  cards.forEach(card => card.style.display = 'block');
+}
+</script>
+
+</body>
+</html>
